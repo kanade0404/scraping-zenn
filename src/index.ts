@@ -1,37 +1,20 @@
-import puppeteer from "puppeteer"
+import type {HttpFunction} from '@google-cloud/functions-framework/build/src/functions';
+import {start} from './scraping';
 
-const url = "https://zenn.dev/luvmini511"
-
-export const start = async () => {
-    console.log("start")
-    const browser = await puppeteer.launch(
-        {
-            headless: false,
-            args: ["--no-sandbox"]
-        }
-    )
-    const page = await browser.newPage()
-    console.log("new tab")
-    await page.goto(url, {waitUntil: "domcontentloaded"})
-    const currentUrl = page.url()
-    console.log(`show page url: ${url},title: ${await page.title()}`)
-    const articles = await page.evaluate(() => {
-        const list = [...document.querySelectorAll(".ArticleCard_container__3qUYt")]
-        return list.map(l => {
-            const result = {
-                title: l.querySelector(".ArticleCard_title__UnBHE")?.textContent,
-                tags: [...l.querySelectorAll(".ArticleCard_topicLink__NfdwJ")].map(e => e.textContent),
-                time: l.querySelector("time")?.getAttribute("datetime"),
-                url: l.querySelector(".ArticleCard_mainLink__X2TOE")?.getAttribute("href")
-            }
-            console.log(`selected article info: ${JSON.stringify(result)}`)
-            return result
-        })
-    })
-    const fixedUrlArticles = articles.map(article => ({
-        ...article, url: `${currentUrl}/${article.url}`
-    }))
-    console.log(`final results: ${JSON.stringify(fixedUrlArticles)}`)
-    await browser.close()
-}
-start().then(() => console.log("end"))
+export const main: HttpFunction = async (req, res) => {
+  console.log('start');
+  const {name} = req.query;
+  try {
+    console.log(`before scraping name:${name}`);
+    if (!name) {
+      res.status(400).send({message: "Query strings 'name' is required."})
+      return
+    }
+    const articles = await start(name.toString());
+    console.log(`success scraping name:${name}`);
+    res.send({message: 'success', data: articles});
+  } catch (e) {
+    console.error(e);
+    res.status(400).send({message: 'error occurred.', error: e});
+  }
+};
