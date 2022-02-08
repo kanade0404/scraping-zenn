@@ -1,5 +1,6 @@
 import type {HttpFunction} from '@google-cloud/functions-framework/build/src/functions';
 import {start} from './scraping';
+import {save} from "./storeArticles";
 
 export const main: HttpFunction = async (req, res) => {
   console.log('start');
@@ -10,8 +11,10 @@ export const main: HttpFunction = async (req, res) => {
       res.status(400).send({message: "Query strings 'name' is required."})
       return
     }
-    const articles = await start(name.toString());
-    console.log(`success scraping name:${name}`);
+    const userName = name.toString()
+    const articles = await start(userName);
+    console.log(`success scraping name:${userName}`);
+    await save(userName, articles)
     res.send({message: 'success', data: articles});
   } catch (e) {
     console.error(e);

@@ -1,8 +1,9 @@
 import puppeteer from 'puppeteer';
 import {Article} from "./type";
 import {getArticles} from "./getArticles";
+import {omit} from "remeda";
 
-const url = 'https://zenn.dev/';
+const url = 'https://zenn.dev';
 
 type Start = (name: string) => Promise<Article[]>
 export const start: Start = async (name) => {
@@ -18,11 +19,10 @@ export const start: Start = async (name) => {
   console.log(`show page url: ${currentUrl},title: ${await page.title()}`);
   const articles = await page.evaluate(getArticles);
   const fixedUrlArticles = articles.map(article => ({
-    ...article,
-    url: `${currentUrl}/${article.url}`,
+    ...omit(article, ["url"]),
+    url: `${url}${article.url}`,
   }));
   console.log(`final results: ${JSON.stringify(fixedUrlArticles)}`);
   await browser.close();
-  return articles
+  return fixedUrlArticles
 };
-start("luvmini511")
