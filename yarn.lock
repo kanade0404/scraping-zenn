@@ -48,10 +48,10 @@
     google-gax "^2.24.1"
     protobufjs "^6.8.6"
 
-"@google-cloud/functions-framework@^2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@google-cloud/functions-framework/-/functions-framework-2.1.0.tgz#ef50738dca41dbd926c6b6a17e437a098ac3e3cc"
-  integrity sha512-ajW6gIhsSZeHArSTvWmELoUkz27aLHEP/bD9GIapgMcb6q9TlR8CkIYti9Pyss5D6YrvTcs4k2ah/zz2hEUgEg==
+"@google-cloud/functions-framework@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@google-cloud/functions-framework/-/functions-framework-3.0.0.tgz#2b7e6454ee9fe4d1eaaa08384fc01de4a72cd081"
+  integrity sha512-+K9+y39/5ig4QrbnaCM8BOzt4+Qx5SRMu2dj5QDTNFc5s8f/Lubty8u3aBQN6JC86M0NuHL9zIj8xs8Awj7C+w==
   dependencies:
     body-parser "^1.18.3"
     cloudevents "^5.1.0"
