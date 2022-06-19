@@ -2548,10 +2548,10 @@ registry-url@^5.0.0:
   dependencies:
     rc "^1.2.8"
 
-remeda@^0.0.32:
-  version "0.0.32"
-  resolved "https://registry.yarnpkg.com/remeda/-/remeda-0.0.32.tgz#668e5d3b8a5c9edb1a19f33d5df805dd1e7d299c"
-  integrity sha512-FEdl8ONpqY7AvvMHG5WYdomc0mGf2khHPUDu6QvNkOq4Wjkw5BvzWM4QyksAQ/US1sFIIRG8TVBn6iJx6HbRrA==
+remeda@^0.0.35:
+  version "0.0.35"
+  resolved "https://registry.yarnpkg.com/remeda/-/remeda-0.0.35.tgz#4a0192fa4605cc4b88ee50a8d1e8821c223e23d2"
+  integrity sha512-3/HunoFQVnPNkh8tX1kmKx8thZWpnENgRVRbaze0IYiWkLDbMxrQWai5bZt+yOedf5fkrnj9+iJ+bCU27+Zuzw==
 
 require-directory@^2.1.1:
   version "2.1.1"

@@ -7,7 +7,7 @@
     "dotenv": "^16.0.0",
     "express": "^4.17.2",
     "puppeteer": "^14.0.0",
-    "remeda": "^0.0.32"
+    "remeda": "^0.0.35"
   },
   "devDependencies": {
     "@types/express": "4.17.13",
