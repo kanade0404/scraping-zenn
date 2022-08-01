@@ -2313,10 +2313,10 @@ regexpp@^3.2.0:
   resolved "https://registry.yarnpkg.com/regexpp/-/regexpp-3.2.0.tgz#0425a2768d8f23bad70ca4b90461fa2f1213e1b2"
   integrity sha512-pq2bWo9mVD43nbts2wGv17XLiNLya+GklZ8kaDLV2Z08gDCsGpnKn9BFMepvWuHCbyVvY7J5o5+BVvoQbmlJLg==
 
-remeda@^0.2.0:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/remeda/-/remeda-0.2.1.tgz#ad9f024971b328f20a1da78866efbd7b775dee67"
-  integrity sha512-y0nehKFF5w88h5gHVctFtVdaQLj1juzdowewSS3vzXhuA3yuAmkwjDAYDiE5GJjgdmWcgz207iVPhWIhAJtLFA==
+remeda@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/remeda/-/remeda-1.0.1.tgz#020ad631248d7670cfeff36db2309b80c7d38287"
+  integrity sha512-W/YDzHzIDDFnD9g5fKmvKSnV7uFvDV6EnM+dfd2iCQdhTyttvhcBkK3YTaxIikefr9UkAsxHyxdZWjhbWZ7x8g==
 
 require-directory@^2.1.1:
   version "2.1.1"
