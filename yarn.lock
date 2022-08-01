@@ -2256,10 +2256,10 @@ regexpp@^3.2.0:
   resolved "https://registry.yarnpkg.com/regexpp/-/regexpp-3.2.0.tgz#0425a2768d8f23bad70ca4b90461fa2f1213e1b2"
   integrity sha512-pq2bWo9mVD43nbts2wGv17XLiNLya+GklZ8kaDLV2Z08gDCsGpnKn9BFMepvWuHCbyVvY7J5o5+BVvoQbmlJLg==
 
-remeda@^0.0.35:
-  version "0.0.35"
-  resolved "https://registry.yarnpkg.com/remeda/-/remeda-0.0.35.tgz#4a0192fa4605cc4b88ee50a8d1e8821c223e23d2"
-  integrity sha512-3/HunoFQVnPNkh8tX1kmKx8thZWpnENgRVRbaze0IYiWkLDbMxrQWai5bZt+yOedf5fkrnj9+iJ+bCU27+Zuzw==
+remeda@^0.2.0:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/remeda/-/remeda-0.2.1.tgz#ad9f024971b328f20a1da78866efbd7b775dee67"
+  integrity sha512-y0nehKFF5w88h5gHVctFtVdaQLj1juzdowewSS3vzXhuA3yuAmkwjDAYDiE5GJjgdmWcgz207iVPhWIhAJtLFA==
 
 require-directory@^2.1.1:
   version "2.1.1"
