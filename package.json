@@ -6,7 +6,7 @@
     "@google-cloud/functions-framework": "^3.0.0",
     "dotenv": "^16.0.0",
     "express": "^4.17.2",
-    "puppeteer": "^15.0.0",
+    "puppeteer": "^16.0.0",
     "remeda": "^1.0.0"
   },
   "devDependencies": {
