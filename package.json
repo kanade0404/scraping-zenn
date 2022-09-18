@@ -10,7 +10,7 @@
     "remeda": "^1.0.0"
   },
   "devDependencies": {
-    "@types/express": "4.17.13",
+    "@types/express": "4.17.14",
     "@types/node": "17.0.8",
     "@types/puppeteer": "5.4.6",
     "@typescript-eslint/eslint-plugin": "5.36.2",
