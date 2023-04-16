@@ -2716,9 +2716,9 @@ readdirp@~3.6.0:
     picomatch "^2.2.1"
 
 remeda@^1.0.0:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/remeda/-/remeda-1.0.1.tgz#020ad631248d7670cfeff36db2309b80c7d38287"
-  integrity sha512-W/YDzHzIDDFnD9g5fKmvKSnV7uFvDV6EnM+dfd2iCQdhTyttvhcBkK3YTaxIikefr9UkAsxHyxdZWjhbWZ7x8g==
+  version "1.12.0"
+  resolved "https://registry.yarnpkg.com/remeda/-/remeda-1.12.0.tgz#dd11ff8640ecf1fd11f3a7a0d8d577cbf579ba40"
+  integrity sha512-IuuWrP1UEyAafKHPQ6bSRGKUxvMh/Kla5LP8ujM/BMf3ciwt5M68j0vlYOl1pIv3J2pS+BMlFKqLtHoYuzcwYQ==
 
 require-directory@^2.1.1:
   version "2.1.1"
