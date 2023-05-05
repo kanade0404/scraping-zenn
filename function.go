@@ -47,7 +47,15 @@ func Scraping(w http.ResponseWriter, r *http.Request) {
 		chromedp.Flag("disable-extensions", false),
 		chromedp.Flag("hide-scrollbars", false),
 		chromedp.Flag("no-sandbox", true),
-		chromedp.Flag("mute-audio", false))
+		chromedp.Flag("mute-audio", false),
+		// Windows 11のGoogle ChromeのUserAgent
+		chromedp.UserAgent(`Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36`),
+		// Mac OSのSafariのUserAgent
+		chromedp.UserAgent(`Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.1 Safari/605.1.15`),
+		// Mac OSのFirefoxのUserAgent
+		chromedp.UserAgent(`Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:93.0) Gecko/20100101 Firefox/93.0`),
+		// Windows 11のMicrosoft EdgeのUserAgent
+		chromedp.UserAgent(`Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36 Edg/93.0.961.47`))
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Minute)
 	defer cancel()
 	alc, _ := chromedp.NewExecAllocator(ctx, opts...)
@@ -90,17 +98,17 @@ func Scraping(w http.ResponseWriter, r *http.Request) {
 	logger.Infof("articleCardNodes: %d", len(articleCardNodes))
 	logger.Infof("end chromedp. target: %v\n", url)
 	var articles []*ArticleContent
-	for nodeIdx := range articleCardNodes {
-		logger.Infof("exec SearchArticleCard: %d/%d", nodeIdx+1, len(articleCardNodes)+1)
-		relLink, ok := articleCardNodes[nodeIdx].Attribute("href")
+	for i := range articleCardNodes {
+		logger.Infof("exec SearchArticleCard: %d/%d", i+1, len(articleCardNodes)+1)
+		relLink, ok := articleCardNodes[i].Attribute("href")
 		if !ok {
-			logger.Errorf("not found href. index: %d", nodeIdx)
+			logger.Errorf("not found href. index: %d", i)
 		}
 		if article, err := SearchArticleCard(ctx, fmt.Sprintf("https://zenn.dev%s", relLink)); err != nil {
-			logger.Errorf("failure SearchArticleCard: %d/%d, error: %s", nodeIdx+1, len(articleCardNodes)+1, err.Error())
+			logger.Errorf("failure SearchArticleCard: %d/%d, error: %s", i+1, len(articleCardNodes)+1, err.Error())
 		} else {
+			logger.Infof("success SearchArticleCard: %d/%d", i+1, len(articleCardNodes)+1)
 			articles = append(articles, article)
-			logger.Infof("success SearchArticleCard: %d/%d", nodeIdx+1, len(articleCardNodes)+1)
 		}
 	}
 	if err := client.UpdateArticles(req.Name, articles); err != nil {

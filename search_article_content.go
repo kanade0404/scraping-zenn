@@ -3,6 +3,7 @@ package scraping_zenn
 import (
 	"context"
 	"fmt"
+	"math/rand"
 	"strconv"
 	"time"
 
@@ -41,6 +42,7 @@ func SearchArticle(ctx context.Context, url string) (*ArticleContent, error) {
 		topics           []string
 	)
 	if err := chromedp.Run(ctx, chromedp.Tasks{
+		chromedp.Sleep(time.Duration(rand.Intn(10)) * time.Second),
 		chromedp.Navigate(url),
 		// header
 		chromedp.WaitVisible("#__next > article > header > div > div"),
@@ -52,12 +54,14 @@ func SearchArticle(ctx context.Context, url string) (*ArticleContent, error) {
 		chromedp.Nodes(topicsSelector, &topicsNodes, chromedp.ByQueryAll),
 		chromedp.Text(goodCountSelector, &goodCount),
 	}); err != nil {
+		logger.Error(err.Error())
 		return nil, err
 	}
 	for i := range topicsNodes {
 		logger.Infof("topic: %+v\n", topicsNodes[i])
 		var text string
 		if err := chromedp.Run(ctx, chromedp.Text(topicsNodes[i].FullXPath(), &text)); err != nil {
+			logger.Error(err.Error())
 			return nil, err
 		}
 		topics = append(topics, text)
@@ -70,14 +74,18 @@ func SearchArticle(ctx context.Context, url string) (*ArticleContent, error) {
 	}
 	if existPublishedAt {
 		if t, err := time.Parse(time.RFC3339, publishedAt); err != nil {
+			logger.Error(err.Error())
 			return nil, err
 		} else {
 			articleContent.PublishedAt = t
 		}
 	} else {
-		return nil, fmt.Errorf("'publishedAt' is not found. selector: %s", publishedAtSelector)
+		err := fmt.Errorf("'publishedAt' is not found. selector: %s", publishedAtSelector)
+		logger.Error(err.Error())
+		return nil, err
 	}
 	if v, err := strconv.Atoi(goodCount); err != nil {
+		logger.Error(err.Error())
 		return nil, err
 	} else {
 		articleContent.GoodCount = v

@@ -1,11 +1,11 @@
 package main
 
 import (
-	"github.com/kanade0404/scraping-zenn/logger"
 	"net/http"
 	"os"
 
 	scraping_zenn "github.com/kanade0404/scraping-zenn"
+	"github.com/kanade0404/scraping-zenn/logger"
 )
 
 func main() {

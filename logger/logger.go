@@ -16,7 +16,7 @@ func Info(msg string) {
 }
 
 func Infof(format string, msgs ...interface{}) {
-	log.Info().Msgf(format, msgs)
+	log.Info().Msgf(format, msgs...)
 }
 
 func Fatal(msg string) {
@@ -25,7 +25,7 @@ func Fatal(msg string) {
 }
 
 func Fatalf(format string, msgs ...interface{}) {
-	log.Fatal().Msgf(format, msgs)
+	log.Fatal().Msgf(format, msgs...)
 	os.Exit(1)
 }
 
@@ -34,5 +34,5 @@ func Error(msg string) {
 }
 
 func Errorf(format string, msgs ...interface{}) {
-	log.Error().Msgf(format, msgs)
+	log.Error().Msgf(format, msgs...)
 }
