@@ -1,2 +1,7 @@
-node_modules
+renovate.json
 .github
+.gitignore
+.git
+deploy.sh
+.env*
+credentials.json
